@@ -9,7 +9,7 @@ import authRouter from "./routes/auth.js";
 import errormiddleWare from "./middlewares/error.js";
 
 const app: Express = express();
-const development: string = process.env["NODE_ENV"]!;
+const development: boolean = process.env["NODE_ENV"]! === "development";
 const cookieSecret: string = process.env["COOKIE_KEY"]!;
 
 if (development) {

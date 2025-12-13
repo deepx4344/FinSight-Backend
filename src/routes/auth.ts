@@ -1,12 +1,13 @@
-import express,{Router} from "express"
+import express, { Router } from "express";
 
-import { validateSchema } from "../middlewares/validation.js"
-import { registerSchema } from "../validations/auth.js"
-import { register } from "../controllers/auth.js"
+import { validateSchema } from "../middlewares/validation.js";
+import { loginSchema, registerSchema } from "../validations/auth.js";
+import { login, register, verify } from "../controllers/auth.js";
 
-const router:Router = express.Router()
+const router: Router = express.Router();
 
-router.post("/register",validateSchema(registerSchema),register)
+router.post("/register", validateSchema(registerSchema), register);
+router.post("/login", validateSchema(loginSchema), login);
+router.get("/verify/:token",verify)
 
-
-export default router
+export default router;
